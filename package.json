@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-storage-task",
+  "version": "0.0.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "mongoose": "^4.6.1"
+  }
+}

@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+var mongoose = require('mongoose');
+var main = require('../main');
+var configuration = require('../configuration');
+mongoose.connect(configuration.mongoose.databaseUri, function (error) {
+    if (error) {
+        throw error;
+    }
+    var taskContext = new main.entities.TaskContext({
+        taskActionIdentifier: mongoose.Types.ObjectId('dd787898ada64ea985269860'),
+        state: 1,
+        energySource: {
+            privateKey: ":(",
+            publicKey: ":)"
+        },
+        arguments: {
+            response: "8---"
+        }
+    });
+    taskContext.save(function (error, taskContext) {
+        if (error) {
+            console.log(error);
+            return;
+        }
+        console.log(JSON.stringify(taskContext));
+        mongoose.disconnect();
+    });
+});
