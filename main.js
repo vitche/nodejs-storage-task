@@ -1,6 +1,13 @@
 var mongoose = require('mongoose');
+var bitCoinClient = require('bitcoinjs-lib');
 module.exports = {
     entities: {
+        EnergySource: function () {
+            var keyPair = bitCoinClient.ECPair.makeRandom();
+            this.privateKey = keyPair.toWIF();
+            this.publicKey = keyPair.getAddress();
+            return this;
+        },
         TaskContext: mongoose.model('TaskContext',
             new mongoose.Schema({
                 taskActionIdentifier: mongoose.Schema.Types.ObjectId,
@@ -20,6 +27,13 @@ module.exports = {
                 }),
                 arguments: Object
             })
-        )
+        ),
+        TaskState: {
+            Unknown: 0,
+            New: 1,
+            Active: 2,
+            Processed: 3,
+            Finished: 4
+        }
     }
 };

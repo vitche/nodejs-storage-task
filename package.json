@@ -7,6 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bitcoinjs-lib": "^2.3.0",
     "mongoose": "^4.6.1"
   }
 }
