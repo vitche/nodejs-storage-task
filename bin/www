@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var main = require('../main');
 var configuration = require('../configuration');
-mongoose.connect(configuration.mongoose.databaseUri, function (error) {
+main.connect(configuration.mongoose.databaseUri, function (error) {
     if (error) {
         throw error;
     }

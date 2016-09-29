@@ -1,6 +1,15 @@
 var mongoose = require('mongoose');
 var bitCoinClient = require('bitcoinjs-lib');
 module.exports = {
+    connect: function (databaseUri, callback) {
+        mongoose.connect(databaseUri, function (error) {
+            if (error) {
+                callback(error);
+                return;
+            }
+            callback();
+        });
+    },
     entities: {
         EnergySource: function () {
             var keyPair = bitCoinClient.ECPair.makeRandom();
