@@ -10,6 +10,9 @@ module.exports = {
             callback();
         });
     },
+    disconnect: function () {
+        mongoose.disconnect();
+    },
     entities: {
         EnergySource: function () {
             var keyPair = bitCoinClient.ECPair.makeRandom();
